@@ -70,6 +70,10 @@ a:hover {
   outline-offset: 3px;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 .skip-link {
   position: absolute;
   left: 0.75rem;
