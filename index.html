@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A simple to-do kanban board with due dates, search, and drag-and-drop. Your tasks stay in this browser.">
+  <meta name="theme-color" content="#f3f4f6">
+  <title>Task Board</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%234b5563'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-size='12' font-family='system-ui,sans-serif' font-weight='700' fill='%23f9fafb'%3ETB%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="./">
+        <span class="brand-mark" aria-hidden="true">TB</span>
+        <span class="brand-name">Task Board</span>
+      </a>
+      <span class="header-note">Saved in this browser</span>
+    </div>
+  </header>
+
+  <main id="main">
+    <h1 class="page-title">Task Board</h1>
+    <p class="lede">Keep work moving across To do, Doing, and Done. Drag cards on a desktop, or use the move buttons on a phone. Overdue tasks are highlighted until you finish them.</p>
+
+    <section class="panel" aria-labelledby="add-heading">
+      <h2 id="add-heading">Add a task</h2>
+      <form id="add-form" class="add-form">
+        <div>
+          <label for="task-title">Title</label>
+          <input id="task-title" name="title" type="text" required maxlength="160" autocomplete="off" placeholder="What needs to get done?">
+        </div>
+        <div>
+          <label for="task-due">Due date <span style="font-weight:500;color:var(--muted)">(optional)</span></label>
+          <input id="task-due" name="due" type="date">
+        </div>
+        <button type="submit" class="btn btn-primary">Add to To do</button>
+      </form>
+      <div class="search-row">
+        <div class="search-field">
+          <label for="search">Search tasks</label>
+          <input id="search" type="search" placeholder="Filter by title" autocomplete="off">
+        </div>
+        <button type="button" class="btn btn-ghost" id="load-sample">Load sample data</button>
+        <button type="button" class="btn btn-danger" id="clear-all">Clear all</button>
+      </div>
+      <p class="status-note" id="filter-status" aria-live="polite"></p>
+    </section>
+
+    <div class="board" id="board">
+      <section class="column" data-column="todo" aria-labelledby="col-todo">
+        <div class="column-header">
+          <h2 id="col-todo">To do</h2>
+          <span class="count" id="count-todo">0</span>
+        </div>
+        <ul class="task-list" data-column="todo" aria-label="To do tasks"></ul>
+        <p class="empty" data-empty="todo">Nothing here yet.</p>
+      </section>
+      <section class="column" data-column="doing" aria-labelledby="col-doing">
+        <div class="column-header">
+          <h2 id="col-doing">Doing</h2>
+          <span class="count" id="count-doing">0</span>
+        </div>
+        <ul class="task-list" data-column="doing" aria-label="Doing tasks"></ul>
+        <p class="empty" data-empty="doing">Nothing in progress.</p>
+      </section>
+      <section class="column" data-column="done" aria-labelledby="col-done">
+        <div class="column-header">
+          <h2 id="col-done">Done</h2>
+          <span class="count" id="count-done">0</span>
+        </div>
+        <ul class="task-list" data-column="done" aria-label="Done tasks"></ul>
+        <p class="empty" data-empty="done">Finished tasks will land here.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>Tasks are stored only in this browser. Clearing site data will erase the board. Overdue means the due date is before today and the task is not in Done.</p>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
